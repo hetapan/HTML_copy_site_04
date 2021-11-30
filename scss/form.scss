@@ -1,0 +1,107 @@
+html,body,div,span,iframe,h1,h2,h3,h4,h5,p,a,img,ul,li,table,tr,th,td,tbody,footer,header,main,nav,section {
+	border: 0;
+	font-weight: normal;
+	margin: 0;
+	list-style: none;
+	padding: 0;
+	text-decoration: none;
+}
+
+//ブレークポイント///////////////////////////
+
+$layout-width-inner: 1090px;
+
+$breakpoints: (
+  "sp": "screen and (max-width: 767px)",
+  "tab": "screen and (max-width: #{$layout-width-inner - 1px})",
+  "pc": "screen and (min-width: #{$layout-width-inner})",
+);
+
+// メディアクエリー///////////////////////////
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// 全体///////////////////////////////////////
+body{
+  font-family: "Georgia, 游明朝, YuMincho, "Hiragino Mincho ProN", Meiryo, serif";
+	letter-spacing: 1.5px;
+
+	h2{
+		font-size: 28px;
+		@include mq('tab'){
+			font-size: 24px;
+		}
+		@include mq('sp'){
+			font-size: 18px;
+		}
+	}
+
+	.txtxs{
+		font-size: 14px;
+		@include mq('tab'){
+			font-size: 12px;
+		}
+		@include mq('sp'){
+			font-size: 10px;
+		}
+	}
+
+	.txts{
+		font-size: 16px;
+		@include mq('tab'){
+			font-size: 14px;
+		}
+		@include mq('sp'){
+			font-size: 12px;
+		}
+	}
+
+	.txtm{
+		font-size: 20px;
+		@include mq('tab'){
+			font-size: 18px;
+		}
+		@include mq('sp'){
+			font-size: 15px;
+		}
+	}
+
+	.txtl{
+		font-size: 28px;
+		@include mq('tab'){
+			font-size: 24px;
+		}
+		@include mq('sp'){
+			font-size: 18px;
+		}
+	}
+}
+
+// ininer/
+.container{
+  margin: 0 auto;
+	width: 1080px;
+	@include mq('tab'){
+		width: calc(100% - 50px);
+	}
+	@include mq('sp'){
+		width: calc(100% - 20px);
+	}
+}
+
+.clear{
+  clear: both;
+}
+
+// main///////////////////////////////
+main{
+  padding: 80px 0;
+  text-align: center;
+
+  p{
+    font-weight: bold;
+  }
+}
